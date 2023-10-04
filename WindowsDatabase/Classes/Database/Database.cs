@@ -7,22 +7,34 @@ using System.Threading.Tasks;
 
 namespace WindowsDatabase.Classes.Database
 {
-    public class Database
+    public static class Database
     {
-        private const string DATASOURCE = @"DBSRV\ita2022";
-        private const string INITIALCATALOG = @"007а2_DoroshenkoNS";
+        private const string DATASOURCE = @"DESKTOP-LQ9AC1C";
+        private const string INITIALCATALOG = @"College";
 
-        public static string ConnectionString
+        public static string ConnectionString =>
+            $@"Data Source={DATASOURCE};Initial Catalog={INITIALCATALOG};Integrated Security=True";
+
+        public static SqlConnection GetConnection() =>
+            new SqlConnection(ConnectionString);
+
+        public static bool Open(SqlConnection connection)
         {
-            get
+            if (connection.State == System.Data.ConnectionState.Closed)
             {
-                return $@"Data Source={DATASOURCE};Initial Catalog={INITIALCATALOG};Integrated Security=True";
+                connection.Open();
+                return true;
             }
+            return false;
         }
-        private SqlConnection connection = new SqlConnection(Database.ConnectionString);
-        public SqlConnection SqlConnections
+        public static bool Close(SqlConnection connection)
         {
-            get { return connection; }
+            if (connection.State == System.Data.ConnectionState.Open)
+            {
+                connection.Close();
+                return true;
+            }
+            return false;
         }
     }
 }

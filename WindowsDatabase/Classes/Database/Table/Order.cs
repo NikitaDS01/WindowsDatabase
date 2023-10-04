@@ -13,17 +13,19 @@ namespace WindowsDatabase.Classes.Database.Table
         private StatusOrder _status;
         private CollectionOrder _collectionOrder;
 
-        public Order(int id, DateTime dateOrder, DateTime dateDelivery, PointIssue pointIssue, User user, int code, 
-            StatusOrder status, CollectionOrder collectionOrder)
+        public Order(int id, DateTime dateOrder, DateTime dateDelivery, PointIssue pointIssue, int code, 
+            StatusOrder status, CollectionOrder collectionOrder, User user = null)
         {
             _id = id;
             _dateOrder = dateOrder;
             _dateDelivery = dateDelivery;
             _pointIssue = pointIssue;
-            _user = user;
             _code = code;
             _status = status;
             _collectionOrder = collectionOrder;
+            _user = user;
+            if (_user == null)
+                _user = User.DefaultUser;
         }
 
         public int Id => _id;

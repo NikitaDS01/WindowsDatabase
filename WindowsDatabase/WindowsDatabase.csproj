@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Database\Database.cs" />
+    <Compile Include="Classes\Database\Enum\ConvertEnum.cs" />
     <Compile Include="Classes\Database\Enum\StatusOrder.cs" />
     <Compile Include="Classes\Database\Enum\UnitChange.cs" />
+    <Compile Include="Classes\Database\Requests.cs" />
     <Compile Include="Classes\Database\Table\CollectionOrder.cs" />
     <Compile Include="Classes\Database\Table\UnitCollectionOrder.cs" />
     <Compile Include="Classes\Database\Table\Order.cs" />
@@ -56,16 +58,27 @@
     <Compile Include="Classes\Database\Table\Product.cs" />
     <Compile Include="Classes\Database\Enum\Role.cs" />
     <Compile Include="Classes\Database\Table\User.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Classes\FunctionWindow\InfoSession.cs" />
+    <Compile Include="Classes\FunctionWindow\MessageInfoShow.cs" />
+    <Compile Include="Windows\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Windows\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\WindowEntrance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\WindowEntrance.Designer.cs">
+      <DependentUpon>WindowEntrance.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Windows\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\WindowEntrance.resx">
+      <DependentUpon>WindowEntrance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resource\" />
-    <Folder Include="Windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
