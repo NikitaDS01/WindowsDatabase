@@ -41,7 +41,7 @@ namespace WindowsDatabase
             }
         }
 
-        private void btnEntranceGuest_Click(object sender, EventArgs e)
+        private void linkLblEntranceGuest_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             InfoSession.SetUser(User.DefaultUser);
             NewOpenWindow();
@@ -56,5 +56,7 @@ namespace WindowsDatabase
             InfoSession.SetUser(null);
             this.Show();
         }
+
+        
     }
 }

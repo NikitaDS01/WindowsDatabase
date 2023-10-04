@@ -34,7 +34,7 @@
             this.txtBoxPassword = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnEntrance = new System.Windows.Forms.Button();
-            this.btnEntranceGuest = new System.Windows.Forms.Button();
+            this.linkLblEntranceGuest = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblLogin
@@ -80,24 +80,23 @@
             this.btnEntrance.UseVisualStyleBackColor = true;
             this.btnEntrance.Click += new System.EventHandler(this.btnEntrance_Click);
             // 
-            // btnEntranceGuest
+            // linkLblEntranceGuest
             // 
-            this.btnEntranceGuest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnEntranceGuest.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnEntranceGuest.Location = new System.Drawing.Point(3, 237);
-            this.btnEntranceGuest.Name = "btnEntranceGuest";
-            this.btnEntranceGuest.Size = new System.Drawing.Size(229, 35);
-            this.btnEntranceGuest.TabIndex = 5;
-            this.btnEntranceGuest.Text = "Войти как гость";
-            this.btnEntranceGuest.UseVisualStyleBackColor = true;
-            this.btnEntranceGuest.Click += new System.EventHandler(this.btnEntranceGuest_Click);
+            this.linkLblEntranceGuest.AutoSize = true;
+            this.linkLblEntranceGuest.Location = new System.Drawing.Point(36, 222);
+            this.linkLblEntranceGuest.Name = "linkLblEntranceGuest";
+            this.linkLblEntranceGuest.Size = new System.Drawing.Size(156, 26);
+            this.linkLblEntranceGuest.TabIndex = 5;
+            this.linkLblEntranceGuest.TabStop = true;
+            this.linkLblEntranceGuest.Text = "Войти как гость";
+            this.linkLblEntranceGuest.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblEntranceGuest_LinkClicked);
             // 
             // WindowEntrance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 294);
-            this.Controls.Add(this.btnEntranceGuest);
+            this.Controls.Add(this.linkLblEntranceGuest);
             this.Controls.Add(this.btnEntrance);
             this.Controls.Add(this.txtBoxPassword);
             this.Controls.Add(this.lblPassword);
@@ -121,7 +120,7 @@
         private System.Windows.Forms.TextBox txtBoxPassword;
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnEntrance;
-        private System.Windows.Forms.Button btnEntranceGuest;
+        private System.Windows.Forms.LinkLabel linkLblEntranceGuest;
     }
 }
 

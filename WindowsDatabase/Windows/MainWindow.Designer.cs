@@ -35,7 +35,7 @@
             // lblInfoUser
             // 
             this.lblInfoUser.AutoSize = true;
-            this.lblInfoUser.Location = new System.Drawing.Point(314, 9);
+            this.lblInfoUser.Location = new System.Drawing.Point(12, 9);
             this.lblInfoUser.Name = "lblInfoUser";
             this.lblInfoUser.Size = new System.Drawing.Size(47, 26);
             this.lblInfoUser.TabIndex = 0;
@@ -49,7 +49,7 @@
             this.Controls.Add(this.lblInfoUser);
             this.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.WindowLoad);
