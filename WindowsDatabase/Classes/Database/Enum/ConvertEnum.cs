@@ -9,17 +9,50 @@ namespace WindowsDatabase.Classes.Database.Enum
 {
     public static class ConvertEnum
     {
+        public const string CLIENT = "Клиент";
+        public const string MANAGER = "Менеджер";
+        public const string ADMIN = "Администратор";
+
+        public const string PIECE = "шт.";
+        public const string KILOGRAM = "кг.";
+
         public static Role FromStringToRole(string value)
         {
             switch (value)
             {
-                case ("Client"): return Role.Client;
-                case ("Manager"): return Role.Client;
-                case ("Admin"): return Role.Client;
+                case (CLIENT): return Role.Client;
+                case (MANAGER): return Role.Client;
+                case (ADMIN): return Role.Client;
                 default: return Role.Guest;
             }
         }
-        public static string FromRoleToString(Role role) =>
-            role.ToString();
+        public static string FromRoleToString(Role role)
+        {
+            switch (role)
+            {
+                case (Role.Client): return CLIENT;
+                case (Role.Manager): return MANAGER;
+                case (Role.Admin): return ADMIN;
+                default: return "Гость";
+            }
+        }
+        public static UnitChange FromStringToUnitChange(string value)
+        {
+            switch (value)
+            {
+                case (PIECE): return UnitChange.Piece;
+                case (KILOGRAM): return UnitChange.Kilogram;
+                default: return UnitChange.Piece;
+            }
+        }
+        public static string FromUnitChangeToString(UnitChange role)
+        {
+            switch (role)
+            {
+                case (UnitChange.Piece): return PIECE;
+                case (UnitChange.Kilogram): return KILOGRAM;
+                default: return PIECE;
+            }
+        }
     }
 }

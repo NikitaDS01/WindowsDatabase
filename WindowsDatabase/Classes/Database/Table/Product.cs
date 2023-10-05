@@ -4,7 +4,8 @@ namespace WindowsDatabase.Classes.Database.Table
 {
     public class Product
     {
-        private int _id;
+        private const string PATH = "G:\\C#\\WindowsDatabase\\WindowsDatabase\\WindowsDatabase\\Resource\\ImageProduct\\";
+        private string _id;
         private string _name;
         private UnitChange _unitChange;
         private float _price;
@@ -17,7 +18,7 @@ namespace WindowsDatabase.Classes.Database.Table
         private string _description;
         private Image _image;
 
-        public Product(int id, string name, UnitChange unitChange, float price, int maxDiscount, string manufacturer, string supplier, string category, int currentDiscount, int countStorage, string description, Image image)
+        public Product(string id, string name, UnitChange unitChange, float price, int maxDiscount, string manufacturer, string supplier, string category, int currentDiscount, int countStorage, string description, Image image)
         {
             _id = id;
             _name = name;
@@ -32,7 +33,7 @@ namespace WindowsDatabase.Classes.Database.Table
             _description = description;
             _image = image;
         }
-        public Product(int id, string name, UnitChange unitChange, float price, int maxDiscount, string manufacturer, string supplier, string category, int currentDiscount, int countStorage, string description, string pathImage)
+        public Product(string id, string name, UnitChange unitChange, float price, int maxDiscount, string manufacturer, string supplier, string category, int currentDiscount, int countStorage, string description, string pathImage)
         {
             _id = id;
             _name = name;
@@ -45,10 +46,10 @@ namespace WindowsDatabase.Classes.Database.Table
             _currentDiscount = currentDiscount;
             _countStorage = countStorage;
             _description = description;
-            _image = Image.FromFile(pathImage);
+            _image = Image.FromFile(PATH+pathImage);
         }
     
-        public int Id => _id;
+        public string Id => _id;
         public string Name => _name;
         public UnitChange UnitChange => _unitChange;
         public float Price => _price;

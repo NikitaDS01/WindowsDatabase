@@ -24,13 +24,20 @@ namespace WindowsDatabase
         private void btnEntrance_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtBoxLogin.Text))
+            {
                 MessageInfoShow.ShowWarning("Введите логин");
+                return;
+            }
             if (string.IsNullOrEmpty(txtBoxPassword.Text))
+            {
                 MessageInfoShow.ShowWarning("Введите пароль");
+                return;
+            }
 
             try
             {
-                User user = Requests.GetUser(txtBoxLogin.Text, txtBoxPassword.Text);
+                //User user = Requests.GetUser(txtBoxLogin.Text, txtBoxPassword.Text);
+                User user = DatabaseTest.GetUser(txtBoxLogin.Text, txtBoxPassword.Text);
                 InfoSession.SetUser(user);
                 NewOpenWindow();
             }
