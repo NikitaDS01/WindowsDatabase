@@ -13,6 +13,8 @@ namespace WindowsDatabase.Windows
 {
     public partial class MainWindow : Form
     {
+        private int _width;
+        private int _height;
         public MainWindow()
         {
             InitializeComponent();
@@ -20,11 +22,19 @@ namespace WindowsDatabase.Windows
                 DatabaseTest.GetProduct("А112Т4"));
             control.Location = new System.Drawing.Point(12, 45);
             this.Controls.Add(control);
+
+            _width = this.Width;
+            _height = this.Height;
         }
 
         private void WindowLoad(object sender, EventArgs e)
         {
             lblInfoUser.Text = $"Пользователь: {InfoSession.GetUser().FullName}";
+        }
+        private void ChangeSizeForm(object sender, EventArgs e)
+        {
+            this.Width = _width;
+            this.Height = _height;
         }
     }
 }

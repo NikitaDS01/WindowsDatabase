@@ -74,7 +74,7 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(319, 146);
             this.lblDescription.TabIndex = 3;
-            this.lblDescription.Text = "Описание";
+            this.lblDescription.Text = "Описание:";
             // 
             // lblPrice
             // 

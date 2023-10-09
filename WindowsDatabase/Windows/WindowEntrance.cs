@@ -16,9 +16,13 @@ namespace WindowsDatabase
 {
     public partial class WindowEntrance : Form
     {
+        private int _width;
+        private int _height;
         public WindowEntrance()
         {
             InitializeComponent();
+            _width = this.Width;
+            _height = this.Height;
         }
 
         private void btnEntrance_Click(object sender, EventArgs e)
@@ -64,6 +68,10 @@ namespace WindowsDatabase
             this.Show();
         }
 
-        
+        private void ChangeSizeForm(object sender, EventArgs e)
+        {
+            this.Width = _width;
+            this.Height = _height;
+        }
     }
 }

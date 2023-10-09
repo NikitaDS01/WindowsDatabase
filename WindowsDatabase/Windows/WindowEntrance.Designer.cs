@@ -35,12 +35,17 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnEntrance = new System.Windows.Forms.Button();
             this.linkLblEntranceGuest = new System.Windows.Forms.LinkLabel();
+            this.lblNameCompany = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.imageBoxLogo = new System.Windows.Forms.PictureBox();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblLogin
             // 
             this.lblLogin.AutoSize = true;
-            this.lblLogin.Location = new System.Drawing.Point(12, 30);
+            this.lblLogin.Location = new System.Drawing.Point(91, 93);
             this.lblLogin.Name = "lblLogin";
             this.lblLogin.Size = new System.Drawing.Size(69, 26);
             this.lblLogin.TabIndex = 0;
@@ -48,14 +53,14 @@
             // 
             // txtBoxLogin
             // 
-            this.txtBoxLogin.Location = new System.Drawing.Point(12, 59);
+            this.txtBoxLogin.Location = new System.Drawing.Point(91, 122);
             this.txtBoxLogin.Name = "txtBoxLogin";
             this.txtBoxLogin.Size = new System.Drawing.Size(203, 34);
             this.txtBoxLogin.TabIndex = 1;
             // 
             // txtBoxPassword
             // 
-            this.txtBoxPassword.Location = new System.Drawing.Point(12, 135);
+            this.txtBoxPassword.Location = new System.Drawing.Point(91, 198);
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.PasswordChar = '*';
             this.txtBoxPassword.Size = new System.Drawing.Size(203, 34);
@@ -64,7 +69,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(12, 106);
+            this.lblPassword.Location = new System.Drawing.Point(91, 169);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(81, 26);
             this.lblPassword.TabIndex = 2;
@@ -72,7 +77,7 @@
             // 
             // btnEntrance
             // 
-            this.btnEntrance.Location = new System.Drawing.Point(59, 186);
+            this.btnEntrance.Location = new System.Drawing.Point(138, 249);
             this.btnEntrance.Name = "btnEntrance";
             this.btnEntrance.Size = new System.Drawing.Size(111, 33);
             this.btnEntrance.TabIndex = 4;
@@ -83,7 +88,7 @@
             // linkLblEntranceGuest
             // 
             this.linkLblEntranceGuest.AutoSize = true;
-            this.linkLblEntranceGuest.Location = new System.Drawing.Point(36, 222);
+            this.linkLblEntranceGuest.Location = new System.Drawing.Point(115, 285);
             this.linkLblEntranceGuest.Name = "linkLblEntranceGuest";
             this.linkLblEntranceGuest.Size = new System.Drawing.Size(156, 26);
             this.linkLblEntranceGuest.TabIndex = 5;
@@ -91,11 +96,41 @@
             this.linkLblEntranceGuest.Text = "Войти как гость";
             this.linkLblEntranceGuest.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblEntranceGuest_LinkClicked);
             // 
+            // lblNameCompany
+            // 
+            this.lblNameCompany.AutoSize = true;
+            this.lblNameCompany.Location = new System.Drawing.Point(83, 27);
+            this.lblNameCompany.Name = "lblNameCompany";
+            this.lblNameCompany.Size = new System.Drawing.Size(303, 26);
+            this.lblNameCompany.TabIndex = 6;
+            this.lblNameCompany.Text = "ООО «Товары для животных»  ";
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.imageBoxLogo);
+            this.panel1.Controls.Add(this.lblNameCompany);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(389, 78);
+            this.panel1.TabIndex = 7;
+            // 
+            // imageBoxLogo
+            // 
+            this.imageBoxLogo.Image = global::WindowsDatabase.Properties.Resources.logo;
+            this.imageBoxLogo.Location = new System.Drawing.Point(3, 3);
+            this.imageBoxLogo.Name = "imageBoxLogo";
+            this.imageBoxLogo.Size = new System.Drawing.Size(70, 70);
+            this.imageBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imageBoxLogo.TabIndex = 7;
+            this.imageBoxLogo.TabStop = false;
+            // 
             // WindowEntrance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(234, 294);
+            this.ClientSize = new System.Drawing.Size(388, 357);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.linkLblEntranceGuest);
             this.Controls.Add(this.btnEntrance);
             this.Controls.Add(this.txtBoxPassword);
@@ -108,6 +143,10 @@
             this.Name = "WindowEntrance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Вход";
+            this.SizeChanged += new System.EventHandler(this.ChangeSizeForm);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageBoxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +160,9 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Button btnEntrance;
         private System.Windows.Forms.LinkLabel linkLblEntranceGuest;
+        private System.Windows.Forms.Label lblNameCompany;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox imageBoxLogo;
     }
 }
 
