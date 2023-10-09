@@ -40,8 +40,8 @@ namespace WindowsDatabase
 
             try
             {
-                //User user = Requests.GetUser(txtBoxLogin.Text, txtBoxPassword.Text);
-                User user = DatabaseTest.GetUser(txtBoxLogin.Text, txtBoxPassword.Text);
+                User user = Requests.GetUser(txtBoxLogin.Text, txtBoxPassword.Text);
+                //User user = DatabaseTest.GetUser(txtBoxLogin.Text, txtBoxPassword.Text);
                 InfoSession.SetUser(user);
                 NewOpenWindow();
             }

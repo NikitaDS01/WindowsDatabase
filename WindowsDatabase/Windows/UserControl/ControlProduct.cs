@@ -16,6 +16,11 @@ namespace WindowsDatabase.Windows
     {
         private Product _product;
 
+        public ControlProduct()
+        {
+            InitializeComponent();
+        }
+
         public ControlProduct(Product product)
         {
             InitializeComponent();
@@ -32,7 +37,8 @@ namespace WindowsDatabase.Windows
             float currentPrice = _product.Price * (1f - _product.CurrentDiscount / 100f);
             lblPrice.Text += currentPrice.ToString();
             lblPrice.Text += $"/{ConvertEnum.FromUnitChangeToString(_product.UnitChange)}";
-            imageBoxProduct.Image = _product.Image;
+            if(_product.Image  != null) 
+                imageBoxProduct.Image = _product.Image;
         }
     }
 }

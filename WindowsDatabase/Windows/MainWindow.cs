@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsDatabase.Classes.Database;
+using WindowsDatabase.Classes.Database.Table;
+using WindowsDatabase.Classes.FunctionWindow;
 
 namespace WindowsDatabase.Windows
 {
@@ -18,15 +20,31 @@ namespace WindowsDatabase.Windows
         public MainWindow()
         {
             InitializeComponent();
-            ControlProduct control = new ControlProduct(
-                DatabaseTest.GetProduct("А112Т4"));
-            control.Location = new System.Drawing.Point(12, 45);
-            this.Controls.Add(control);
+            AddProductsPanel();
 
             _width = this.Width;
             _height = this.Height;
         }
-
+        private void AddProductsPanel()
+        {
+            try 
+            { 
+                List<Product> products = Requests.GetProducts();
+                int index = 0;
+                foreach(var product in products)
+                {
+                    ControlProduct control = new ControlProduct(product);
+                    control.Tag = index;
+                    panelProduct.Controls.Add(control);
+                    index++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageInfoShow.ShowError(ex.Message);
+                return;
+            }
+        }
         private void WindowLoad(object sender, EventArgs e)
         {
             lblInfoUser.Text = $"Пользователь: {InfoSession.GetUser().FullName}";

@@ -70,16 +70,16 @@
             // 
             // lblDescription
             // 
-            this.lblDescription.Location = new System.Drawing.Point(378, 4);
+            this.lblDescription.Location = new System.Drawing.Point(140, 71);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(319, 146);
+            this.lblDescription.Size = new System.Drawing.Size(637, 98);
             this.lblDescription.TabIndex = 3;
             this.lblDescription.Text = "Описание:";
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(140, 108);
+            this.lblPrice.Location = new System.Drawing.Point(3, 143);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(64, 26);
             this.lblPrice.TabIndex = 4;
@@ -88,7 +88,7 @@
             // lblCategory
             // 
             this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(140, 56);
+            this.lblCategory.Location = new System.Drawing.Point(429, 4);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(111, 26);
             this.lblCategory.TabIndex = 5;
@@ -97,7 +97,7 @@
             // lblManufacturer
             // 
             this.lblManufacturer.AutoSize = true;
-            this.lblManufacturer.Location = new System.Drawing.Point(140, 82);
+            this.lblManufacturer.Location = new System.Drawing.Point(429, 30);
             this.lblManufacturer.Name = "lblManufacturer";
             this.lblManufacturer.Size = new System.Drawing.Size(160, 26);
             this.lblManufacturer.TabIndex = 6;
@@ -118,7 +118,7 @@
             this.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "ControlProduct";
-            this.Size = new System.Drawing.Size(700, 150);
+            this.Size = new System.Drawing.Size(780, 173);
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxProduct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

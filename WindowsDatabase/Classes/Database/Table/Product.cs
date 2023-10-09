@@ -4,7 +4,8 @@ namespace WindowsDatabase.Classes.Database.Table
 {
     public class Product
     {
-        private const string PATH = "G:\\C#\\WindowsDatabase\\WindowsDatabase\\WindowsDatabase\\Resource\\ImageProduct\\";
+        private const string PATH = @"Resource\Image\";
+
         private string _id;
         private string _name;
         private UnitChange _unitChange;
@@ -46,7 +47,10 @@ namespace WindowsDatabase.Classes.Database.Table
             _currentDiscount = currentDiscount;
             _countStorage = countStorage;
             _description = description;
-            _image = Image.FromFile(PATH+pathImage);
+            if (string.IsNullOrEmpty(pathImage))
+                _image = null;
+            else
+                _image = Image.FromFile(PATH+pathImage);
         }
     
         public string Id => _id;
