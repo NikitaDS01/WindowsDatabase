@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,42 +18,94 @@ namespace WindowsDatabase.Windows
     {
         private int _width;
         private int _height;
+        private int _countRows;
+        private int _page;
+
         public MainWindow()
         {
             InitializeComponent();
-            AddProductsPanel();
+            _countRows = Convert.ToInt32(cmbBoxCountPage.SelectedItem.ToString());
+            _page = 0;
+
+            UpdateUIPanel(GetProducts());
 
             _width = this.Width;
             _height = this.Height;
+            
         }
-        private void AddProductsPanel()
+
+        public int CurrentPage => _page + 1;
+
+        private List<Product> GetProducts()
         {
-            try 
-            { 
-                List<Product> products = Requests.GetProducts();
-                int index = 0;
-                foreach(var product in products)
-                {
-                    ControlProduct control = new ControlProduct(product);
-                    control.Tag = index;
-                    panelProduct.Controls.Add(control);
-                    index++;
-                }
+            try
+            {
+                List<Product> products = Requests.GetProducts(_countRows, _page);
+                return products;
             }
             catch (Exception ex)
             {
                 MessageInfoShow.ShowError(ex.Message);
-                return;
+                return new List<Product>();
             }
         }
+        private void UpdateUIPanel(List<Product> products)
+        {
+            panelProduct.Controls.Clear();
+
+            int index = 0;
+            foreach (var product in products)
+            {
+                var control = new ControlProduct(product);
+                control.Tag = index;
+                panelProduct.Controls.Add(control);
+                index++;
+            }
+        }
+
         private void WindowLoad(object sender, EventArgs e)
         {
-            lblInfoUser.Text = $"Пользователь: {InfoSession.GetUser().FullName}";
+            lblInfoUser.Text = $"Пользователь:\n{InfoSession.GetUser().FullName}";
         }
         private void ChangeSizeForm(object sender, EventArgs e)
         {
             this.Width = _width;
             this.Height = _height;
+        }
+
+        private void btnPageLast_Click(object sender, EventArgs e)
+        {
+            if(_page - 1 >= 0)
+            {
+                _page -= 1;
+                UpdateUIPanel(GetProducts());
+                lblPageCount.Text = CurrentPage.ToString();
+            }
+        }
+
+        private void btnPageNext_Click(object sender, EventArgs e)
+        {
+            _page += 1;
+            List<Product> products = GetProducts();
+            if (products.Count == 0)
+            {
+                _page -= 1;
+                return;
+            }
+
+            UpdateUIPanel(products);
+            lblPageCount.Text = CurrentPage.ToString();
+        }
+        private void cmbBoxCountPage_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int newCountRows = Convert.ToInt32(cmbBoxCountPage.SelectedItem.ToString());
+            if (_countRows != newCountRows)
+            {
+                _countRows = newCountRows;
+                _page = 0;
+                UpdateUIPanel(GetProducts());
+                lblPageCount.Text = CurrentPage.ToString();
+            }
         }
     }
 }

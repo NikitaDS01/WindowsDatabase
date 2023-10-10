@@ -95,17 +95,5 @@ namespace WindowsDatabase.Classes.Database
             Database.Close(connection);
             return products;
         }
-        private static DataSet GetDataAdapter(string sql)
-        {
-            DataSet dataSet = new DataSet();
-            var connection = Database.GetConnection();
-            Database.Open(connection);
-
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(sql, connection);
-
-            dataAdapter.Fill(dataSet);
-            Database.Close(connection);
-            return dataSet;
-        }
     }
 }
