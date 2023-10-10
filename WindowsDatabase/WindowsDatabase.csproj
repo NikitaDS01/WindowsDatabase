@@ -47,11 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Database\Database.cs" />
-    <Compile Include="Classes\Database\DatabaseTest.cs" />
     <Compile Include="Classes\Database\Enum\ConvertEnum.cs" />
     <Compile Include="Classes\Database\Enum\StatusOrder.cs" />
     <Compile Include="Classes\Database\Enum\UnitChange.cs" />
     <Compile Include="Classes\Database\Requests.cs" />
+    <Compile Include="Classes\Database\StringRequests.cs" />
     <Compile Include="Classes\Database\Table\CollectionOrder.cs" />
     <Compile Include="Classes\Database\Table\UnitCollectionOrder.cs" />
     <Compile Include="Classes\Database\Table\Order.cs" />

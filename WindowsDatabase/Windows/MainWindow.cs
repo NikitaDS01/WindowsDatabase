@@ -24,6 +24,10 @@ namespace WindowsDatabase.Windows
         public MainWindow()
         {
             InitializeComponent();
+            cmbBoxCountPage.SelectedIndex = 1;
+            cmbBoxSorting.SelectedIndex = 0;
+            radioBtnAsc.Checked = true;
+
             _countRows = Convert.ToInt32(cmbBoxCountPage.SelectedItem.ToString());
             _page = 0;
 

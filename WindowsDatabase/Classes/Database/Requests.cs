@@ -18,11 +18,12 @@ namespace WindowsDatabase.Classes.Database
             Database.Open(connection);
 
             string sql = "SELECT [Номер],[Роль],[ФИО],[Логин],[Пароль]" +
-                    "FROM [Логин].[Пользователи]" +
-                    $"WHERE [Логин] = '{login}' " +
-                    $"AND [Пароль] = '{password}'";
+                    "FROM [Логин].[Пользователи] ";
 
-            var cmd = new SqlCommand(sql, connection);
+            var request = new StringRequests(sql);
+            request.AddWhereEqually("Логин", login).AddWhereEqually("Пароль", password);
+
+            var cmd = new SqlCommand(request.GetRequest(), connection);
             SqlDataReader reader = cmd.ExecuteReader();
             User user;
             if (reader.Read())
@@ -49,25 +50,13 @@ namespace WindowsDatabase.Classes.Database
             var connection = Database.GetConnection();
             Database.Open(connection);
 
-            string sql = string.Empty;
-            if(count == -1)
-            {
-                sql = "SELECT [Артикуль],[Наименование],[Единица измерения],[Стоимость],[Максимальная скидки],[Производитель],[Поставщик],[Категория]" +
-                    ",[Текущая скидка],[Кол-во на складе],[Описание],[Изображение] " +
-                    "FROM [Логин].[Товары] " +
-                    "Order by [Наименование] ASC";
-            }
-            else
-            {
-                sql = "SELECT [Артикуль],[Наименование],[Единица измерения],[Стоимость],[Максимальная скидки],[Производитель],[Поставщик],[Категория]" +
-                    ",[Текущая скидка],[Кол-во на складе],[Описание],[Изображение] " +
-                    "FROM [Логин].[Товары] " +
-                    "Order by [Наименование] ASC " +
-                    $"Offset {page*count} Rows " +
-                    $"Fetch Next {count} Rows only";
-            }
+            string sql = "SELECT [Артикуль],[Наименование],[Единица измерения],[Стоимость],[Максимальная скидки],[Производитель],[Поставщик],[Категория]" +
+                    ",[Текущая скидка],[Кол-во на складе],[Описание],[Изображение] FROM [Логин].[Товары] ";
+            
+            StringRequests requests = new StringRequests(sql);
+            requests.SetOrderBy("Наименование", true).SetPage(count, page);
 
-            var cmd = new SqlCommand(sql, connection);
+            var cmd = new SqlCommand(requests.GetRequest(), connection);
             
             List<Product> products = new List<Product>();
             SqlDataReader reader = cmd.ExecuteReader();

@@ -39,8 +39,14 @@
             this.lblPageCount = new System.Windows.Forms.Label();
             this.lblCount = new System.Windows.Forms.Label();
             this.cmbBoxCountPage = new System.Windows.Forms.ComboBox();
+            this.lblSorting = new System.Windows.Forms.Label();
+            this.cmbBoxSorting = new System.Windows.Forms.ComboBox();
+            this.radioBtnAsc = new System.Windows.Forms.RadioButton();
+            this.radioBtnDesc = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxLogo)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblInfoUser
@@ -124,7 +130,7 @@
             // lblCount
             // 
             this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(842, 690);
+            this.lblCount.Location = new System.Drawing.Point(830, 685);
             this.lblCount.Name = "lblCount";
             this.lblCount.Size = new System.Drawing.Size(205, 26);
             this.lblCount.TabIndex = 13;
@@ -143,14 +149,69 @@
             this.cmbBoxCountPage.Name = "cmbBoxCountPage";
             this.cmbBoxCountPage.Size = new System.Drawing.Size(121, 34);
             this.cmbBoxCountPage.TabIndex = 15;
-            this.cmbBoxCountPage.SelectedItem = "10";
             this.cmbBoxCountPage.SelectionChangeCommitted += new System.EventHandler(this.cmbBoxCountPage_SelectionChangeCommitted);
+            // 
+            // lblSorting
+            // 
+            this.lblSorting.AutoSize = true;
+            this.lblSorting.Location = new System.Drawing.Point(830, 416);
+            this.lblSorting.Name = "lblSorting";
+            this.lblSorting.Size = new System.Drawing.Size(150, 26);
+            this.lblSorting.TabIndex = 16;
+            this.lblSorting.Text = "Сортировка по:";
+            // 
+            // cmbBoxSorting
+            // 
+            this.cmbBoxSorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxSorting.FormattingEnabled = true;
+            this.cmbBoxSorting.Items.AddRange(new object[] {
+            "Наименованию",
+            "Стоимости",
+            "Категории"});
+            this.cmbBoxSorting.Location = new System.Drawing.Point(986, 413);
+            this.cmbBoxSorting.Name = "cmbBoxSorting";
+            this.cmbBoxSorting.Size = new System.Drawing.Size(176, 34);
+            this.cmbBoxSorting.TabIndex = 17;
+            // 
+            // radioBtnAsc
+            // 
+            this.radioBtnAsc.AutoSize = true;
+            this.radioBtnAsc.Location = new System.Drawing.Point(3, 3);
+            this.radioBtnAsc.Name = "radioBtnAsc";
+            this.radioBtnAsc.Size = new System.Drawing.Size(143, 30);
+            this.radioBtnAsc.TabIndex = 18;
+            this.radioBtnAsc.TabStop = true;
+            this.radioBtnAsc.Text = "Возрастание";
+            this.radioBtnAsc.UseVisualStyleBackColor = true;
+            // 
+            // radioBtnDesc
+            // 
+            this.radioBtnDesc.AutoSize = true;
+            this.radioBtnDesc.Location = new System.Drawing.Point(199, 3);
+            this.radioBtnDesc.Name = "radioBtnDesc";
+            this.radioBtnDesc.Size = new System.Drawing.Size(130, 30);
+            this.radioBtnDesc.TabIndex = 19;
+            this.radioBtnDesc.TabStop = true;
+            this.radioBtnDesc.Text = "Убываение";
+            this.radioBtnDesc.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.radioBtnAsc);
+            this.panel1.Controls.Add(this.radioBtnDesc);
+            this.panel1.Location = new System.Drawing.Point(830, 453);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(332, 38);
+            this.panel1.TabIndex = 20;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.cmbBoxSorting);
+            this.Controls.Add(this.lblSorting);
             this.Controls.Add(this.cmbBoxCountPage);
             this.Controls.Add(this.lblCount);
             this.Controls.Add(this.lblPageCount);
@@ -170,6 +231,8 @@
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxLogo)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,5 +250,10 @@
         private System.Windows.Forms.Label lblPageCount;
         private System.Windows.Forms.Label lblCount;
         private System.Windows.Forms.ComboBox cmbBoxCountPage;
+        private System.Windows.Forms.Label lblSorting;
+        private System.Windows.Forms.ComboBox cmbBoxSorting;
+        private System.Windows.Forms.RadioButton radioBtnAsc;
+        private System.Windows.Forms.RadioButton radioBtnDesc;
+        private System.Windows.Forms.Panel panel1;
     }
 }
