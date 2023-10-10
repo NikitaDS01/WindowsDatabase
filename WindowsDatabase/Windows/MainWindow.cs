@@ -24,9 +24,6 @@ namespace WindowsDatabase.Windows
         public MainWindow()
         {
             InitializeComponent();
-            cmbBoxCountPage.SelectedIndex = 1;
-            cmbBoxSorting.SelectedIndex = 0;
-            radioBtnAsc.Checked = true;
 
             _countRows = Convert.ToInt32(cmbBoxCountPage.SelectedItem.ToString());
             _page = 0;
@@ -44,7 +41,9 @@ namespace WindowsDatabase.Windows
         {
             try
             {
-                List<Product> products = Requests.GetProducts(_countRows, _page);
+                string nameAttribute = cmbBoxSorting.SelectedItem.ToString();
+                bool isAsc = radioBtnAsc.Checked;
+                List<Product> products = Requests.GetProducts(nameAttribute, isAsc, txtBoxSearch.Text, _countRows, _page);
                 return products;
             }
             catch (Exception ex)
@@ -110,6 +109,17 @@ namespace WindowsDatabase.Windows
                 UpdateUIPanel(GetProducts());
                 lblPageCount.Text = CurrentPage.ToString();
             }
+        }
+
+        private void ChangeSorting(object sender, EventArgs e)
+        {
+            _page = 0;
+            UpdateUIPanel(GetProducts());
+        }
+
+        private void txtBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            UpdateUIPanel(GetProducts());
         }
     }
 }

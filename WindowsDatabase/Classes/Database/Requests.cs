@@ -45,7 +45,7 @@ namespace WindowsDatabase.Classes.Database
 
         }      
         
-        public static List<Product> GetProducts(int count = -1, int page = 1)
+        public static List<Product> GetProducts(string nameAttribute, bool isAsc, string search = null, int count = -1, int page = 0)
         {
             var connection = Database.GetConnection();
             Database.Open(connection);
@@ -54,7 +54,16 @@ namespace WindowsDatabase.Classes.Database
                     ",[Текущая скидка],[Кол-во на складе],[Описание],[Изображение] FROM [Логин].[Товары] ";
             
             StringRequests requests = new StringRequests(sql);
-            requests.SetOrderBy("Наименование", true).SetPage(count, page);
+            requests.
+                SetOrderBy(nameAttribute, isAsc).
+                SetPage(count, page);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                requests.
+                    AddWhereLike("Наименование", $"%{search}%").
+                    AddWhereLike("Описание", $"%{search}%");
+            }
 
             var cmd = new SqlCommand(requests.GetRequest(), connection);
             

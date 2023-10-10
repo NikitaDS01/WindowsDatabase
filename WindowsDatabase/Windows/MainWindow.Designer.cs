@@ -44,6 +44,8 @@
             this.radioBtnAsc = new System.Windows.Forms.RadioButton();
             this.radioBtnDesc = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.txtBoxSearch = new System.Windows.Forms.TextBox();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxLogo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -145,6 +147,7 @@
             "10",
             "20",
             "50"});
+            this.cmbBoxCountPage.SelectedIndex = 1;
             this.cmbBoxCountPage.Location = new System.Drawing.Point(1041, 682);
             this.cmbBoxCountPage.Name = "cmbBoxCountPage";
             this.cmbBoxCountPage.Size = new System.Drawing.Size(121, 34);
@@ -154,7 +157,7 @@
             // lblSorting
             // 
             this.lblSorting.AutoSize = true;
-            this.lblSorting.Location = new System.Drawing.Point(830, 416);
+            this.lblSorting.Location = new System.Drawing.Point(830, 470);
             this.lblSorting.Name = "lblSorting";
             this.lblSorting.Size = new System.Drawing.Size(150, 26);
             this.lblSorting.TabIndex = 16;
@@ -165,17 +168,20 @@
             this.cmbBoxSorting.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBoxSorting.FormattingEnabled = true;
             this.cmbBoxSorting.Items.AddRange(new object[] {
-            "Наименованию",
-            "Стоимости",
-            "Категории"});
-            this.cmbBoxSorting.Location = new System.Drawing.Point(986, 413);
+            "Наименование",
+            "Стоимость",
+            "Категория"});
+            this.cmbBoxSorting.SelectedIndex = 0;
+            this.cmbBoxSorting.Location = new System.Drawing.Point(986, 467);
             this.cmbBoxSorting.Name = "cmbBoxSorting";
             this.cmbBoxSorting.Size = new System.Drawing.Size(176, 34);
             this.cmbBoxSorting.TabIndex = 17;
+            this.cmbBoxSorting.SelectedIndexChanged += new System.EventHandler(this.ChangeSorting);
             // 
             // radioBtnAsc
             // 
             this.radioBtnAsc.AutoSize = true;
+            this.radioBtnAsc.Checked = true;
             this.radioBtnAsc.Location = new System.Drawing.Point(3, 3);
             this.radioBtnAsc.Name = "radioBtnAsc";
             this.radioBtnAsc.Size = new System.Drawing.Size(143, 30);
@@ -183,6 +189,7 @@
             this.radioBtnAsc.TabStop = true;
             this.radioBtnAsc.Text = "Возрастание";
             this.radioBtnAsc.UseVisualStyleBackColor = true;
+            this.radioBtnAsc.CheckedChanged += new System.EventHandler(this.ChangeSorting);
             // 
             // radioBtnDesc
             // 
@@ -191,24 +198,43 @@
             this.radioBtnDesc.Name = "radioBtnDesc";
             this.radioBtnDesc.Size = new System.Drawing.Size(130, 30);
             this.radioBtnDesc.TabIndex = 19;
-            this.radioBtnDesc.TabStop = true;
             this.radioBtnDesc.Text = "Убываение";
             this.radioBtnDesc.UseVisualStyleBackColor = true;
+            this.radioBtnDesc.CheckedChanged += new System.EventHandler(this.ChangeSorting);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.radioBtnAsc);
             this.panel1.Controls.Add(this.radioBtnDesc);
-            this.panel1.Location = new System.Drawing.Point(830, 453);
+            this.panel1.Location = new System.Drawing.Point(830, 507);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(332, 38);
             this.panel1.TabIndex = 20;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Location = new System.Drawing.Point(830, 323);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(77, 26);
+            this.lblSearch.TabIndex = 21;
+            this.lblSearch.Text = "Поиск:";
+            // 
+            // txtBoxSearch
+            // 
+            this.txtBoxSearch.Location = new System.Drawing.Point(914, 323);
+            this.txtBoxSearch.Name = "txtBoxSearch";
+            this.txtBoxSearch.Size = new System.Drawing.Size(248, 34);
+            this.txtBoxSearch.TabIndex = 22;
+            this.txtBoxSearch.TextChanged += new System.EventHandler(this.txtBoxSearch_TextChanged);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.txtBoxSearch);
+            this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmbBoxSorting);
             this.Controls.Add(this.lblSorting);
@@ -255,5 +281,7 @@
         private System.Windows.Forms.RadioButton radioBtnAsc;
         private System.Windows.Forms.RadioButton radioBtnDesc;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.TextBox txtBoxSearch;
     }
 }

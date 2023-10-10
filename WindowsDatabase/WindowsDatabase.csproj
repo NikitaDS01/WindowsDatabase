@@ -67,6 +67,12 @@
     <Compile Include="Windows\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Windows\WindowUpdateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\WindowUpdateProduct.Designer.cs">
+      <DependentUpon>WindowUpdateProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\UserControl\ControlProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,6 +106,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Windows\WindowUpdateProduct.resx">
+      <DependentUpon>WindowUpdateProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
