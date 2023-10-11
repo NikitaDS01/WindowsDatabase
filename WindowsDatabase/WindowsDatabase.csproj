@@ -51,7 +51,7 @@
     <Compile Include="Classes\Database\Enum\StatusOrder.cs" />
     <Compile Include="Classes\Database\Enum\UnitChange.cs" />
     <Compile Include="Classes\Database\Requests.cs" />
-    <Compile Include="Classes\Database\StringRequests.cs" />
+    <Compile Include="Classes\Database\StringSelectRequests.cs" />
     <Compile Include="Classes\Database\Table\CollectionOrder.cs" />
     <Compile Include="Classes\Database\Table\UnitCollectionOrder.cs" />
     <Compile Include="Classes\Database\Table\Order.cs" />
@@ -59,6 +59,7 @@
     <Compile Include="Classes\Database\Table\Product.cs" />
     <Compile Include="Classes\Database\Enum\Role.cs" />
     <Compile Include="Classes\Database\Table\User.cs" />
+    <Compile Include="Classes\FunctionWindow\GenerationString.cs" />
     <Compile Include="Classes\FunctionWindow\InfoSession.cs" />
     <Compile Include="Classes\FunctionWindow\MessageInfoShow.cs" />
     <Compile Include="Windows\MainWindow.cs">
@@ -157,6 +158,7 @@
     <Content Include="Resource\Image\А112Т4.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resource\picture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

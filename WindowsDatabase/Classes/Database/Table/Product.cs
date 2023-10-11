@@ -4,7 +4,7 @@ namespace WindowsDatabase.Classes.Database.Table
 {
     public class Product
     {
-        private const string PATH = @"Resource\Image\";
+        public const string PATH = @"Resource\Image\";
 
         private string _id;
         private string _name;

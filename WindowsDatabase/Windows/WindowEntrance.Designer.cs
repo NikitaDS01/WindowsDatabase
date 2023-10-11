@@ -57,6 +57,7 @@
             this.txtBoxLogin.Name = "txtBoxLogin";
             this.txtBoxLogin.Size = new System.Drawing.Size(203, 34);
             this.txtBoxLogin.TabIndex = 1;
+            this.txtBoxLogin.Text = "pixil59@gmail.com";
             // 
             // txtBoxPassword
             // 
@@ -65,6 +66,7 @@
             this.txtBoxPassword.PasswordChar = '*';
             this.txtBoxPassword.Size = new System.Drawing.Size(203, 34);
             this.txtBoxPassword.TabIndex = 3;
+            this.txtBoxPassword.Text = "2L6KZG";
             // 
             // lblPassword
             // 

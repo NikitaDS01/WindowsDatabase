@@ -6,20 +6,23 @@ using System.Threading.Tasks;
 
 namespace WindowsDatabase.Classes.Database
 {
-    public class StringRequests
+    public class StringSelectRequests
     {
         private string _mainSelect;
         private string _orderBy;
         private string _page;
         private Queue<(string, bool)> _where;
 
-        public StringRequests(string select)
+        public StringSelectRequests(string select)
         {
             _mainSelect = select;
             _orderBy = string.Empty;
             _page = string.Empty;
             _where = new Queue<(string, bool)>();
         }
+
+        public static StringSelectRequests GetNewSelect(string sql) 
+            => new StringSelectRequests(sql);
 
         public string GetRequest()
         {
@@ -31,6 +34,7 @@ namespace WindowsDatabase.Classes.Database
             while(_where.Count > 0)
             {
                 var where = _where.Dequeue();
+                bool value = where.Item2;
                 request += where.Item1;
                 if (_where.Count != 0)
                     request += where.Item2 ? "AND " : "OR ";
@@ -39,29 +43,36 @@ namespace WindowsDatabase.Classes.Database
             return request + _page;
         }
 
-        public StringRequests SetOrderBy(string nameAttributeOrder, bool isIncreasing = true)
+        public StringSelectRequests SetOrderBy(string nameAttributeOrder, bool isIncreasing = true)
         {
             string _sorting = isIncreasing ? "ASC" : "DESC";
             _orderBy = $"Order by [{nameAttributeOrder}] {_sorting} ";
             return this;
         }
-        public StringRequests SetPage(int count, int page)
+        public StringSelectRequests SetPage(int count, int page)
         {
             _page = $"Offset {page * count} Rows " +
                     $"Fetch Next {count} Rows only";
             return this;
         }
 
-        public StringRequests AddWhereLike(string nameAttributeWhere, string value, bool isAnd = false)
+        public StringSelectRequests AddWhereLike(string nameAttributeWhere, string value, bool isAnd = false)
         {
             string newWhere = AddWhere(nameAttributeWhere, "LIKE", value);
             _where.Enqueue((newWhere, isAnd));
             return this;
         }
 
-        public StringRequests AddWhereEqually(string nameAttributeWhere, string value, bool isAnd = true)
+        public StringSelectRequests AddWhereEqually(string nameAttributeWhere, string value, bool isAnd = true)
         {
             string newWhere = AddWhere(nameAttributeWhere, "=", value);
+            _where.Enqueue((newWhere, isAnd));
+            return this;
+        }
+
+        public StringSelectRequests AddWhereIn(string nameAttributeWhere, StringSelectRequests requests, bool isAnd = true)
+        {
+            string newWhere = $"[{nameAttributeWhere}] IN ({requests.GetRequest()})";
             _where.Enqueue((newWhere, isAnd));
             return this;
         }

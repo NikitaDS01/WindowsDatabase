@@ -21,8 +21,8 @@ namespace WindowsDatabase.Classes.Database.Enum
             switch (value)
             {
                 case (CLIENT): return Role.Client;
-                case (MANAGER): return Role.Client;
-                case (ADMIN): return Role.Client;
+                case (MANAGER): return Role.Manager;
+                case (ADMIN): return Role.Admin;
                 default: return Role.Guest;
             }
         }
@@ -42,7 +42,7 @@ namespace WindowsDatabase.Classes.Database.Enum
             {
                 case (PIECE): return UnitChange.Piece;
                 case (KILOGRAM): return UnitChange.Kilogram;
-                default: return UnitChange.Piece;
+                default: return UnitChange.None;
             }
         }
         public static string FromUnitChangeToString(UnitChange role)
@@ -51,7 +51,7 @@ namespace WindowsDatabase.Classes.Database.Enum
             {
                 case (UnitChange.Piece): return PIECE;
                 case (UnitChange.Kilogram): return KILOGRAM;
-                default: return PIECE;
+                default: return "None";
             }
         }
     }

@@ -46,6 +46,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtBoxSearch = new System.Windows.Forms.TextBox();
+            this.cmbBoxManufacturer = new System.Windows.Forms.ComboBox();
+            this.lblManufacturer = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.lblCountRows = new System.Windows.Forms.Label();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBoxLogo)).BeginInit();
             this.panel1.SuspendLayout();
@@ -94,9 +99,9 @@
             this.panelProduct.AutoScroll = true;
             this.panelProduct.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelProduct.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.panelProduct.Location = new System.Drawing.Point(4, 87);
+            this.panelProduct.Location = new System.Drawing.Point(4, 118);
             this.panelProduct.Name = "panelProduct";
-            this.panelProduct.Size = new System.Drawing.Size(820, 662);
+            this.panelProduct.Size = new System.Drawing.Size(820, 631);
             this.panelProduct.TabIndex = 9;
             this.panelProduct.WrapContents = false;
             // 
@@ -147,7 +152,6 @@
             "10",
             "20",
             "50"});
-            this.cmbBoxCountPage.SelectedIndex = 1;
             this.cmbBoxCountPage.Location = new System.Drawing.Point(1041, 682);
             this.cmbBoxCountPage.Name = "cmbBoxCountPage";
             this.cmbBoxCountPage.Size = new System.Drawing.Size(121, 34);
@@ -169,9 +173,7 @@
             this.cmbBoxSorting.FormattingEnabled = true;
             this.cmbBoxSorting.Items.AddRange(new object[] {
             "Наименование",
-            "Стоимость",
-            "Категория"});
-            this.cmbBoxSorting.SelectedIndex = 0;
+            "Стоимость"});
             this.cmbBoxSorting.Location = new System.Drawing.Point(986, 467);
             this.cmbBoxSorting.Name = "cmbBoxSorting";
             this.cmbBoxSorting.Size = new System.Drawing.Size(176, 34);
@@ -214,7 +216,7 @@
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
-            this.lblSearch.Location = new System.Drawing.Point(830, 323);
+            this.lblSearch.Location = new System.Drawing.Point(830, 181);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(77, 26);
             this.lblSearch.TabIndex = 21;
@@ -222,17 +224,72 @@
             // 
             // txtBoxSearch
             // 
-            this.txtBoxSearch.Location = new System.Drawing.Point(914, 323);
+            this.txtBoxSearch.Location = new System.Drawing.Point(914, 181);
             this.txtBoxSearch.Name = "txtBoxSearch";
             this.txtBoxSearch.Size = new System.Drawing.Size(248, 34);
             this.txtBoxSearch.TabIndex = 22;
             this.txtBoxSearch.TextChanged += new System.EventHandler(this.txtBoxSearch_TextChanged);
+            // 
+            // cmbBoxManufacturer
+            // 
+            this.cmbBoxManufacturer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBoxManufacturer.FormattingEnabled = true;
+            this.cmbBoxManufacturer.Location = new System.Drawing.Point(983, 318);
+            this.cmbBoxManufacturer.Name = "cmbBoxManufacturer";
+            this.cmbBoxManufacturer.Size = new System.Drawing.Size(176, 34);
+            this.cmbBoxManufacturer.TabIndex = 24;
+            this.cmbBoxManufacturer.SelectedValueChanged += new System.EventHandler(this.cmbBoxManufacturer_SelectedValueChanged);
+            // 
+            // lblManufacturer
+            // 
+            this.lblManufacturer.AutoSize = true;
+            this.lblManufacturer.Location = new System.Drawing.Point(827, 321);
+            this.lblManufacturer.Name = "lblManufacturer";
+            this.lblManufacturer.Size = new System.Drawing.Size(154, 26);
+            this.lblManufacturer.TabIndex = 23;
+            this.lblManufacturer.Text = "Производитель";
+            // 
+            // btnExit
+            // 
+            this.btnExit.AutoSize = true;
+            this.btnExit.Location = new System.Drawing.Point(1083, 83);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(89, 36);
+            this.btnExit.TabIndex = 25;
+            this.btnExit.Text = "Выход";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // lblCountRows
+            // 
+            this.lblCountRows.AutoSize = true;
+            this.lblCountRows.Location = new System.Drawing.Point(408, 86);
+            this.lblCountRows.Name = "lblCountRows";
+            this.lblCountRows.Size = new System.Drawing.Size(58, 26);
+            this.lblCountRows.TabIndex = 26;
+            this.lblCountRows.Text = "0 / 0";
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.AutoSize = true;
+            this.btnAddProduct.Location = new System.Drawing.Point(620, 81);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(186, 36);
+            this.btnAddProduct.TabIndex = 27;
+            this.btnAddProduct.Text = "Добавить продукт";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 761);
+            this.Controls.Add(this.btnAddProduct);
+            this.Controls.Add(this.lblCountRows);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.cmbBoxManufacturer);
+            this.Controls.Add(this.lblManufacturer);
             this.Controls.Add(this.txtBoxSearch);
             this.Controls.Add(this.lblSearch);
             this.Controls.Add(this.panel1);
@@ -283,5 +340,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblSearch;
         private System.Windows.Forms.TextBox txtBoxSearch;
+        private System.Windows.Forms.ComboBox cmbBoxManufacturer;
+        private System.Windows.Forms.Label lblManufacturer;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label lblCountRows;
+        private System.Windows.Forms.Button btnAddProduct;
     }
 }

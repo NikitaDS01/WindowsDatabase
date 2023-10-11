@@ -13,5 +13,7 @@ namespace WindowsDatabase.Classes.FunctionWindow
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
         public static void ShowWarning(string message, string caption = "Предупреждение") =>
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        public static DialogResult ShowChoice(string message, string caption) =>
+            MessageBox.Show(message, caption, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
     }
 }
