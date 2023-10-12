@@ -309,6 +309,7 @@
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainWindow_FormClosed);
             this.Load += new System.EventHandler(this.WindowLoad);
             this.SizeChanged += new System.EventHandler(this.ChangeSizeForm);
             this.panelLogo.ResumeLayout(false);

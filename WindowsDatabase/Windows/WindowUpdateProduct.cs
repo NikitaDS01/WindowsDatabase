@@ -49,8 +49,6 @@ namespace WindowsDatabase.Windows
             txtBoxManufacturer.Text = product.Manufacturer;
             txtBoxSupplier.Text = product.Supplier;
             txtBoxDescription.Text = product.Description;
-            cmbBoxCategory.Text = product.Category;
-            cmbBoxUnitChange.Text = ConvertEnum.FromUnitChangeToString(product.UnitChange);
             numericCount.Value = product.CountStorage;
             numericPrice.Value = (decimal)product.Price;
             imageBoxProduct.Image = product.Image;
@@ -58,6 +56,9 @@ namespace WindowsDatabase.Windows
             btnAdd.Visible = false;
 
             Init();
+
+            cmbBoxCategory.SelectedItem = product.Category;
+            cmbBoxUnitChange.SelectedItem = ConvertEnum.FromUnitChangeToString(product.UnitChange);
         }
         private string PathProduct =>
             Product.PATH + _index + ".png";
@@ -128,6 +129,7 @@ namespace WindowsDatabase.Windows
             try
             {
                 Requests.InsertProduct(_product);
+                InfoSession.EventUpdateDB();
                 this.Close();
             }
             catch (Exception ex)
@@ -165,6 +167,7 @@ namespace WindowsDatabase.Windows
             try
             {
                 Requests.UpdateProduct(_product);
+                InfoSession.EventUpdateDB();
                 this.Close();
             }
             catch (Exception ex)

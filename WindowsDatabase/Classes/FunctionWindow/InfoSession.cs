@@ -7,6 +7,11 @@ using WindowsDatabase.Classes.Database.Table;
 
 public static class InfoSession
 {
+    public static event Action OnUpdateDataBase;
+
+    public static void EventUpdateDB() =>
+        OnUpdateDataBase?.Invoke();
+
     private static User _user;
 
     public static bool IsUserEmpty =>

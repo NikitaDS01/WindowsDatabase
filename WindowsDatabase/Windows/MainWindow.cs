@@ -117,6 +117,7 @@ namespace WindowsDatabase.Windows
         private void WindowLoad(object sender, EventArgs e)
         {
             lblInfoUser.Text = $"Пользователь:\n{InfoSession.GetUser().FullName}";
+            InfoSession.OnUpdateDataBase += UIChange;
         }
         private void ChangeSizeForm(object sender, EventArgs e)
         {
@@ -196,6 +197,19 @@ namespace WindowsDatabase.Windows
         {
             WindowUpdateProduct window = new WindowUpdateProduct();
             window.ShowDialog();
+        }
+        public void UIChange()
+        {
+            int index = cmbBoxManufacturer.SelectedIndex;
+            cmbBoxManufacturer.Items.Clear();
+            GetManufacturers();
+            cmbBoxManufacturer.SelectedIndex = index;
+            UpdateUIPanel(GetProducts());
+        }
+
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InfoSession.OnUpdateDataBase -= UIChange;
         }
     }
 }

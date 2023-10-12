@@ -59,6 +59,7 @@ namespace WindowsDatabase.Windows
             try
             {
                 Requests.DeleteProduct(_product);
+                InfoSession.EventUpdateDB();
             }
             catch (Exception ex)
             {
