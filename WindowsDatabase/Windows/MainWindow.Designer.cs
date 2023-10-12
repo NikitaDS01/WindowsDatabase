@@ -97,6 +97,7 @@
             // panelProduct
             // 
             this.panelProduct.AutoScroll = true;
+            this.panelProduct.BackColor = System.Drawing.Color.White;
             this.panelProduct.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelProduct.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.panelProduct.Location = new System.Drawing.Point(4, 118);

@@ -86,7 +86,7 @@ namespace WindowsDatabase.Windows
 
         private void Copy(string lastPath, string newPath)
         {
-            if (File.Exists(newPath))
+            if (File.Exists(newPath) && !string.IsNullOrEmpty(_index))
                 File.Delete(newPath);
             File.Copy(
                 lastPath,
@@ -109,7 +109,7 @@ namespace WindowsDatabase.Windows
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            Image tmp = null;
+            string path = null;
             if (!string.IsNullOrEmpty(_pathImage))
             {
                 if (!File.Exists(_pathImage))
@@ -117,15 +117,15 @@ namespace WindowsDatabase.Windows
                     MessageInfoShow.ShowError("Изображения нет в пути назначения");
                     return;
                 }
+                string format = new ImageFormatConverter().ConvertToString(Image.FromFile(_pathImage).RawFormat);
                 Copy(_pathImage, PathProduct);
-
-                tmp = imageBoxProduct.Image;
+                path = _index+"."+ format;
             }
             _product = new Product(_index, txtBoxName.Text, 
                 ConvertEnum.FromStringToUnitChange(cmbBoxUnitChange.Text),
                 Convert.ToInt32(numericPrice.Value), 0, txtBoxManufacturer.Text, txtBoxSupplier.Text,
                 cmbBoxCategory.Text, 0, Convert.ToInt32(numericCount.Value), txtBoxDescription.Text,
-                tmp);
+                path);
             try
             {
                 Requests.InsertProduct(_product);
@@ -146,7 +146,7 @@ namespace WindowsDatabase.Windows
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            Image tmp = _product.Image;
+            string path = _product.PathImage;
             if (!string.IsNullOrEmpty(_pathImage))
             {
                 if (!File.Exists(_pathImage))
@@ -154,16 +154,18 @@ namespace WindowsDatabase.Windows
                     MessageInfoShow.ShowError("Изображения нет в пути назначения");
                     return;
                 }
+                string format = new ImageFormatConverter().ConvertToString(Image.FromFile(_pathImage).RawFormat);
                 Copy(_pathImage, PathProduct);
 
-                tmp = imageBoxProduct.Image;
+                path = _index + "." + format;
+
             }
 
             _product = new Product(_product.Id, txtBoxName.Text,
                 ConvertEnum.FromStringToUnitChange(cmbBoxUnitChange.Text),
                 Convert.ToInt32(numericPrice.Value), 0, txtBoxManufacturer.Text, txtBoxSupplier.Text,
                 cmbBoxCategory.Text, 0, Convert.ToInt32(numericCount.Value), txtBoxDescription.Text,
-                tmp);
+                path);
             try
             {
                 Requests.UpdateProduct(_product);

@@ -36,6 +36,8 @@ namespace WindowsDatabase.Windows
             lblManufacturer.Text += _product.Manufacturer;
             float currentPrice = _product.Price * (1f - _product.CurrentDiscount / 100f);
             lblPrice.Text += currentPrice.ToString() + "руб.";
+            if (_product.CountStorage == 0)
+                this.BackColor = Color.Gray;
             if(_product.Image  != null) 
                 imageBoxProduct.Image = _product.Image;
             if (InfoSession.GetUser().Role != Role.Admin)
@@ -58,8 +60,16 @@ namespace WindowsDatabase.Windows
 
             try
             {
-                Requests.DeleteProduct(_product);
-                InfoSession.EventUpdateDB();
+                if (!Requests.IsProductOrder(_product))
+                {
+                    Requests.DeleteProduct(_product);
+                    InfoSession.EventUpdateDB();
+                }
+                else
+                {
+                    MessageInfoShow.ShowError("Данный товар нельзя удалить. Он есть в заказах");
+                    return;
+                }
             }
             catch (Exception ex)
             {

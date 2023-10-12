@@ -98,6 +98,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblManufacturer);

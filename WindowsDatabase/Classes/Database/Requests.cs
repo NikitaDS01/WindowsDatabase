@@ -50,11 +50,11 @@ namespace WindowsDatabase.Classes.Database
             var connection = Database.GetConnection();
             Database.Open(connection);
 
-            string sql = "SELECT [Артикуль],[Наименование],[Единица измерения],[Стоимость],[Максимальная скидки],[Производитель],[Поставщик],[Категория]" +
+            string sql = "SELECT [Артикул],[Наименование],[Единица измерения],[Стоимость],[Максимальная скидки],[Производитель],[Поставщик],[Категория]" +
                     ",[Текущая скидка],[Кол-во на складе],[Описание],[Изображение] FROM [Логин].[Товары] ";
 
             StringSelectRequests requestsSearch = StringSelectRequests.
-                GetNewSelect("Select [Артикуль] from [Логин].[Товары]").
+                GetNewSelect("Select [Артикул] from [Логин].[Товары]").
                 AddWhereLike("Наименование", $"%{search}%").
                 AddWhereLike("Описание", $"%{search}%");
 
@@ -69,7 +69,7 @@ namespace WindowsDatabase.Classes.Database
 
             if (!string.IsNullOrEmpty(search))
             {
-                requests.AddWhereIn("Артикуль", requestsSearch);
+                requests.AddWhereIn("Артикул", requestsSearch);
             }
 
             var cmd = new SqlCommand(requests.GetRequest(), connection);
@@ -124,13 +124,34 @@ namespace WindowsDatabase.Classes.Database
                );
         }
         public static bool IsThereIndex(string index) =>
-            IsThereValue("Артикуль", index);
+            IsThereValue("Артикул", index);
+        public static bool IsProductOrder(Product product)
+        {
+            var connection = Database.GetConnection();
+            Database.Open(connection);
+
+            string sql = "select count(*) from [Логин].[СоставЗаказа] " +
+                "where [Артикул]=@Art";
+
+            var cmd = new SqlCommand(sql, connection);
+            cmd.Parameters.AddWithValue("Art", product.Id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int count = reader.GetInt32(0);
+                Database.Close(connection);
+                return count != 0;
+            }
+            throw new Exception(
+               "К сожалению база данных не была подключена. Проверьте соединение"
+               );
+        }
         public static void InsertProduct(Product product)
         {
             var connection = Database.GetConnection();
             Database.Open(connection);
 
-            string sql = "INSERT INTO [Логин].[Товары]([Артикуль],[Наименование],[Единица измерения],[Стоимость],[Максимальная скидки]," +
+            string sql = "INSERT INTO [Логин].[Товары]([Артикул],[Наименование],[Единица измерения],[Стоимость],[Максимальная скидки]," +
                 "[Производитель],[Поставщик],[Категория],[Текущая скидка],[Кол-во на складе],[Описание],[Изображение]) ";
             sql += "VALUES (@Art,@Name,@Unit,@Price,@MD,@MF,@S,@Categ,@CD,@CS,@Desc,@Img)";
 
@@ -149,6 +170,7 @@ namespace WindowsDatabase.Classes.Database
             if (product.Image != null)
             {
                 string format = new ImageFormatConverter().ConvertToString(product.Image.RawFormat);
+                if (format == "Jpeg") format = "Jpg";
                 cmd.Parameters.AddWithValue("Img", $"{product.Id}.{format}");
             }
             else
@@ -171,7 +193,7 @@ namespace WindowsDatabase.Classes.Database
 
             string sql = "UPDATE [Логин].[Товары] set [Наименование]=@Name,[Единица измерения]=@Unit,[Стоимость]=@Price," +
                 "[Максимальная скидки]=@MD,[Производитель]=@MF,[Поставщик]=@S,[Категория]=@Categ,[Текущая скидка]=@CD," +
-                "[Кол-во на складе]=@CS,[Описание]=@Desc,[Изображение]=@Img where [Артикуль]=@Art";
+                "[Кол-во на складе]=@CS,[Описание]=@Desc,[Изображение]=@Img where [Артикул]=@Art";
 
             
             var cmd = new SqlCommand(sql, connection);
@@ -189,6 +211,7 @@ namespace WindowsDatabase.Classes.Database
             if (product.Image != null)
             {
                 string format = new ImageFormatConverter().ConvertToString(product.Image.RawFormat);
+                if (format == "Jpeg") format = "Jpg";
                 cmd.Parameters.AddWithValue("Img", $"{product.Id}.{format}");
             }
             else
@@ -210,7 +233,7 @@ namespace WindowsDatabase.Classes.Database
             Database.Open(connection);
 
             string sql = "DELETE FROM [Логин].[Товары] " +
-                "WHERE [Артикуль]=@Art";
+                "WHERE [Артикул]=@Art";
             var cmd = new SqlCommand(sql, connection);
             cmd.Parameters.AddWithValue("Art", product.Id);
             try

@@ -203,6 +203,8 @@ namespace WindowsDatabase.Windows
             int index = cmbBoxManufacturer.SelectedIndex;
             cmbBoxManufacturer.Items.Clear();
             GetManufacturers();
+            if (index >= cmbBoxManufacturer.Items.Count)
+                index = 0;
             cmbBoxManufacturer.SelectedIndex = index;
             UpdateUIPanel(GetProducts());
         }
