@@ -48,5 +48,6 @@ namespace WindowsDatabase.Classes.Database.Table
         public string Description => _description;
         public Image Image => _pathImage==null ? null : Image.FromFile(PATH + _pathImage);
         public string PathImage => _pathImage;
+        public static string NewPath(string id, string format) => id + '.' + format;
     }
 }

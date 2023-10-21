@@ -51,7 +51,8 @@ namespace WindowsDatabase.Windows
             txtBoxDescription.Text = product.Description;
             numericCount.Value = product.CountStorage;
             numericPrice.Value = (decimal)product.Price;
-            imageBoxProduct.Image = product.Image;
+            if(product.Image!= null) 
+                imageBoxProduct.Image = product.Image;
 
             btnAdd.Visible = false;
 
@@ -60,8 +61,6 @@ namespace WindowsDatabase.Windows
             cmbBoxCategory.SelectedItem = product.Category;
             cmbBoxUnitChange.SelectedItem = ConvertEnum.FromUnitChangeToString(product.UnitChange);
         }
-        private string PathProduct =>
-            Product.PATH + _index + ".png";
         private void Init()
         {
             _width = this.Width;
@@ -86,7 +85,7 @@ namespace WindowsDatabase.Windows
 
         private void Copy(string lastPath, string newPath)
         {
-            if (File.Exists(newPath) && !string.IsNullOrEmpty(_index))
+            if (File.Exists(newPath))
                 File.Delete(newPath);
             File.Copy(
                 lastPath,
@@ -118,14 +117,16 @@ namespace WindowsDatabase.Windows
                     return;
                 }
                 string format = new ImageFormatConverter().ConvertToString(Image.FromFile(_pathImage).RawFormat);
-                Copy(_pathImage, PathProduct);
-                path = _index+"."+ format;
+                path = Product.NewPath(_index, format);
+                Copy(_pathImage, Product.PATH+path);
             }
+
             _product = new Product(_index, txtBoxName.Text, 
                 ConvertEnum.FromStringToUnitChange(cmbBoxUnitChange.Text),
                 Convert.ToInt32(numericPrice.Value), 0, txtBoxManufacturer.Text, txtBoxSupplier.Text,
                 cmbBoxCategory.Text, 0, Convert.ToInt32(numericCount.Value), txtBoxDescription.Text,
                 path);
+
             try
             {
                 Requests.InsertProduct(_product);
@@ -155,10 +156,8 @@ namespace WindowsDatabase.Windows
                     return;
                 }
                 string format = new ImageFormatConverter().ConvertToString(Image.FromFile(_pathImage).RawFormat);
-                Copy(_pathImage, PathProduct);
-
-                path = _index + "." + format;
-
+                path = Product.NewPath(_product.Id, format);
+                Copy(_pathImage, Product.PATH + path);
             }
 
             _product = new Product(_product.Id, txtBoxName.Text,
