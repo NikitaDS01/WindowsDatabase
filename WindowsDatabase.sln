@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsDatabase", "WindowsDatabase\WindowsDatabase.csproj", "{56D8CF54-79B5-45C3-BE32-430F4DB62A1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SF2022User22Lib", "SF2022User22Lib\SF2022User22Lib.csproj", "{80C45BA9-B636-4DEC-ADE6-47509728A95F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{56D8CF54-79B5-45C3-BE32-430F4DB62A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56D8CF54-79B5-45C3-BE32-430F4DB62A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56D8CF54-79B5-45C3-BE32-430F4DB62A1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80C45BA9-B636-4DEC-ADE6-47509728A95F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80C45BA9-B636-4DEC-ADE6-47509728A95F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80C45BA9-B636-4DEC-ADE6-47509728A95F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80C45BA9-B636-4DEC-ADE6-47509728A95F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

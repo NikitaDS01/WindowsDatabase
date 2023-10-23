@@ -126,7 +126,12 @@
   <ItemGroup>
     <None Include="Resource\logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SF2022User22Lib\SF2022User22Lib.csproj">
+      <Project>{80c45ba9-b636-4dec-ade6-47509728a95f}</Project>
+      <Name>SF2022User22Lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resource\Image\E345R4.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

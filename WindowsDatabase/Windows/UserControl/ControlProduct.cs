@@ -22,7 +22,6 @@ namespace WindowsDatabase.Windows
         {
             InitializeComponent();
         }
-
         public ControlProduct(Product product)
         {
             InitializeComponent();

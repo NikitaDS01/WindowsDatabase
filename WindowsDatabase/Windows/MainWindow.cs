@@ -46,6 +46,11 @@ namespace WindowsDatabase.Windows
 
         public int CurrentPage => _page + 1;
 
+        private void SetOnePage()
+        {
+            _page = 0;
+            lblPageCount.Text = CurrentPage.ToString();
+        }
         private void AdminRole()
         {
             if (InfoSession.GetUser().Role != Role.Admin)
@@ -53,7 +58,6 @@ namespace WindowsDatabase.Windows
                 btnAddProduct.Visible = false;
             }
         }
-
         private void SetMaxCountRows()
         {
             try
@@ -66,7 +70,6 @@ namespace WindowsDatabase.Windows
                 return;
             }
         }
-
         private void GetManufacturers()
         {
             try
@@ -81,7 +84,6 @@ namespace WindowsDatabase.Windows
                 return;
             }
         }
-
         private List<Product> GetProducts()
         {
             try
@@ -113,6 +115,16 @@ namespace WindowsDatabase.Windows
                 index++;
             }
         }
+        public void UIChange()
+        {
+            int index = cmbBoxManufacturer.SelectedIndex;
+            cmbBoxManufacturer.Items.Clear();
+            GetManufacturers();
+            if (index >= cmbBoxManufacturer.Items.Count)
+                index = 0;
+            cmbBoxManufacturer.SelectedIndex = index;
+            UpdateUIPanel(GetProducts());
+        }
 
         private void WindowLoad(object sender, EventArgs e)
         {
@@ -124,7 +136,11 @@ namespace WindowsDatabase.Windows
             this.Width = _width;
             this.Height = _height;
         }
-
+        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InfoSession.OnUpdateDataBase -= UIChange;
+        }
+        
         private void btnPageLast_Click(object sender, EventArgs e)
         {
             if(_page - 1 >= 0)
@@ -134,7 +150,6 @@ namespace WindowsDatabase.Windows
                 lblPageCount.Text = CurrentPage.ToString();
             }
         }
-
         private void btnPageNext_Click(object sender, EventArgs e)
         {
             _page += 1;
@@ -148,6 +163,15 @@ namespace WindowsDatabase.Windows
             UpdateUIPanel(products);
             lblPageCount.Text = CurrentPage.ToString();
         }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            WindowUpdateProduct window = new WindowUpdateProduct();
+            window.ShowDialog();
+        }
         private void cmbBoxCountPage_SelectionChangeCommitted(object sender, EventArgs e)
         {
             int newCountRows = Convert.ToInt32(cmbBoxCountPage.SelectedItem.ToString());
@@ -158,22 +182,6 @@ namespace WindowsDatabase.Windows
                 UpdateUIPanel(GetProducts());
             }
         }
-
-        private void ChangeSorting(object sender, EventArgs e)
-        {
-            if (_countRows != 0)
-            {
-                SetOnePage();
-                UpdateUIPanel(GetProducts());
-            }
-        }
-
-        private void txtBoxSearch_TextChanged(object sender, EventArgs e)
-        {
-            SetOnePage();
-            UpdateUIPanel(GetProducts());
-        }
-
         private void cmbBoxManufacturer_SelectedValueChanged(object sender, EventArgs e)
         {
             if (_countRows != 0)
@@ -182,36 +190,18 @@ namespace WindowsDatabase.Windows
                 UpdateUIPanel(GetProducts());
             }
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
+        private void ChangeSorting(object sender, EventArgs e)
         {
-            this.Close();
+            if (_countRows != 0)
+            {
+                SetOnePage();
+                UpdateUIPanel(GetProducts());
+            }
         }
-        private void SetOnePage()
+        private void txtBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            _page = 0;
-            lblPageCount.Text = CurrentPage.ToString();
-        }
-
-        private void btnAddProduct_Click(object sender, EventArgs e)
-        {
-            WindowUpdateProduct window = new WindowUpdateProduct();
-            window.ShowDialog();
-        }
-        public void UIChange()
-        {
-            int index = cmbBoxManufacturer.SelectedIndex;
-            cmbBoxManufacturer.Items.Clear();
-            GetManufacturers();
-            if (index >= cmbBoxManufacturer.Items.Count)
-                index = 0;
-            cmbBoxManufacturer.SelectedIndex = index;
+            SetOnePage();
             UpdateUIPanel(GetProducts());
-        }
-
-        private void MainWindow_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            InfoSession.OnUpdateDataBase -= UIChange;
         }
     }
 }

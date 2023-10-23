@@ -39,7 +39,6 @@ namespace WindowsDatabase.Windows
 
             Init();
         }
-        
         public WindowUpdateProduct(Product product)
         {
             InitializeComponent();
@@ -82,7 +81,6 @@ namespace WindowsDatabase.Windows
                 return;
             }
         }
-
         private void Copy(string lastPath, string newPath)
         {
             if (File.Exists(newPath))
@@ -92,12 +90,12 @@ namespace WindowsDatabase.Windows
                 newPath
                 );
         }
+       
         private void WindowUpdateProduct_SizeChanged(object sender, EventArgs e)
         {
             this.Width = _width;
             this.Height = _height;
         }
-
         private void btnUpdateImage_Click(object sender, EventArgs e)
         {
             if (fileDialogOpenImage.ShowDialog() == DialogResult.Cancel)
@@ -105,7 +103,6 @@ namespace WindowsDatabase.Windows
             _pathImage = fileDialogOpenImage.FileName;
             imageBoxProduct.ImageLocation = _pathImage;
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string path = null;
@@ -139,12 +136,6 @@ namespace WindowsDatabase.Windows
                 return;
             }
         }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             string path = _product.PathImage;
@@ -177,5 +168,7 @@ namespace WindowsDatabase.Windows
                 return;
             }
         }
+        private void btnExit_Click(object sender, EventArgs e) =>
+            this.Close();
     }
 }
