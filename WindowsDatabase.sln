@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsDatabase", "WindowsD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SF2022User22Lib", "SF2022User22Lib\SF2022User22Lib.csproj", "{94565159-C219-46B5-9E58-869EDE07B5A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoTests", "DemoTest\DemoTests.csproj", "{C541009B-1E54-44AB-8FA9-49580943EB0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{94565159-C219-46B5-9E58-869EDE07B5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94565159-C219-46B5-9E58-869EDE07B5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94565159-C219-46B5-9E58-869EDE07B5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C541009B-1E54-44AB-8FA9-49580943EB0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C541009B-1E54-44AB-8FA9-49580943EB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C541009B-1E54-44AB-8FA9-49580943EB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C541009B-1E54-44AB-8FA9-49580943EB0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

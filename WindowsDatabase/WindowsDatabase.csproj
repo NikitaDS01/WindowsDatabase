@@ -160,10 +160,7 @@
     <None Include="Resource\picture.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SF2022User22Lib\SF2022User22Lib.csproj">
-      <Project>{94565159-c219-46b5-9e58-869ede07b5a3}</Project>
-      <Name>SF2022User22Lib</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

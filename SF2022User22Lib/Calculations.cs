@@ -44,6 +44,9 @@ namespace SF2022User22Lib
             if (consultationTime <= 0)
                 throw new Exception("Необходимое время для менеджера меньше или равно нулю");
 
+            if (beginWorkingTime.TotalMinutes + consultationTime > endWorkingTime.TotalMinutes)
+                throw new Exception("Минимальный свободный промежуток занимает больше времени, чем конец рабочего дня");
+
             List<Interval> freeTimes = new List<Interval>();
             List<Interval> busyTimes = GetBusyIntervals(startTimes, durations, consultationTime);
 
