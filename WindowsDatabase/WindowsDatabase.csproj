@@ -127,12 +127,6 @@
     <None Include="Resource\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SF2022User22Lib\SF2022User22Lib.csproj">
-      <Project>{80c45ba9-b636-4dec-ade6-47509728a95f}</Project>
-      <Name>SF2022User22Lib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resource\Image\E345R4.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -164,6 +158,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resource\picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SF2022User22Lib\SF2022User22Lib.csproj">
+      <Project>{94565159-c219-46b5-9e58-869ede07b5a3}</Project>
+      <Name>SF2022User22Lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

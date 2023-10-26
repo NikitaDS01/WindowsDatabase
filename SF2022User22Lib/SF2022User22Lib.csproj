@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{80C45BA9-B636-4DEC-ADE6-47509728A95F}</ProjectGuid>
+    <ProjectGuid>{94565159-C219-46B5-9E58-869EDE07B5A3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SF2022User22Lib</RootNamespace>

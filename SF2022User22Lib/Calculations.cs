@@ -12,9 +12,9 @@ namespace SF2022User22Lib
         {
             public TimeSpan BeginTime { get; set; }
             public int Duration { get; set; }
-            public Interval(TimeSpan beginTime, int duration) 
+            public Interval(TimeSpan beginTime, int duration)
             {
-                BeginTime = beginTime; 
+                BeginTime = beginTime;
                 Duration = duration;
             }
             public TimeSpan EndTime => BeginTime.Add(TimeSpan.FromMinutes(Duration));
@@ -26,9 +26,9 @@ namespace SF2022User22Lib
             public bool Equals(Interval other) => Interval.Equals(this, other);
             public static bool Equals(Interval left, Interval right)
             {
-                bool isBegin = right.BeginTime <= left.BeginTime && left.BeginTime <= right.EndTime;
-                bool isEnd = right.BeginTime <= left.EndTime && left.EndTime <= right.EndTime;
-                return isBegin && isEnd;
+                bool isBegin = right.BeginTime < left.BeginTime && left.BeginTime < right.EndTime;
+                bool isEnd = right.BeginTime < left.EndTime && left.EndTime < right.EndTime;
+                return isBegin || isEnd;
             }
         }
 
@@ -47,7 +47,7 @@ namespace SF2022User22Lib
             List<Interval> freeTimes = new List<Interval>();
             List<Interval> busyTimes = GetBusyIntervals(startTimes, durations, consultationTime);
 
-            while(beginWorkingTime < endWorkingTime)
+            while (beginWorkingTime < endWorkingTime)
             {
                 var currentInterval = new Interval(beginWorkingTime, consultationTime);
                 Interval? tmpTime = TryIntervalOf(
@@ -66,15 +66,15 @@ namespace SF2022User22Lib
             }
 
             var stringTimes = new string[freeTimes.Count];
-            for(int i = 0; i <  freeTimes.Count; i++)
+            for (int i = 0; i < freeTimes.Count; i++)
                 stringTimes[i] = freeTimes[i].ToString();
             return stringTimes;
         }
         public List<Interval> GetBusyIntervals(TimeSpan[] startTimes, int[] durations, int consultationTime)
         {
-            var stack = new Stack<Interval> ();
+            var stack = new Stack<Interval>();
             int index = 0;
-            while(index < startTimes.Length)
+            while (index < startTimes.Length)
             {
                 TimeSpan begin = startTimes[index];
                 int end = durations[index];
@@ -99,7 +99,7 @@ namespace SF2022User22Lib
         }
         public Interval? TryIntervalOf(Interval interval, List<Interval> busyTimes)
         {
-            foreach(var time in busyTimes)
+            foreach (var time in busyTimes)
             {
                 if (interval.Equals(time))
                     return time;
