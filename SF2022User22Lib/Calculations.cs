@@ -30,6 +30,10 @@ namespace SF2022User22Lib
                 bool isEnd = right.BeginTime < left.EndTime && left.EndTime < right.EndTime;
                 return isBegin || isEnd;
             }
+            public static bool Equals(Interval left, TimeSpan right)
+            {
+                return left.BeginTime < right && right < left.EndTime;
+            }
         }
 
         public string[] AvailablePeriods(TimeSpan[] startTimes, int[] durations,
@@ -59,6 +63,8 @@ namespace SF2022User22Lib
 
                 if (tmpTime == null)
                 {
+                    if (Interval.Equals(currentInterval, endWorkingTime))
+                        break;
                     freeTimes.Add(currentInterval);
                     beginWorkingTime = beginWorkingTime.Add(TimeSpan.FromMinutes(consultationTime));
                 }
