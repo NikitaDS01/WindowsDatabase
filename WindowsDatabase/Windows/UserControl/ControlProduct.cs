@@ -47,8 +47,10 @@ namespace WindowsDatabase.Windows
         {
             if (InfoSession.GetUser().Role == Role.Admin)
             {
+                this.BackColor = Color.FromArgb(73, 140, 81);
                 WindowUpdateProduct window = new WindowUpdateProduct(_product);
                 window.ShowDialog();
+                this.BackColor = Color.White;
             }
         }
 

@@ -63,6 +63,7 @@
             // 
             // panelLogo
             // 
+            this.panelLogo.BackColor = System.Drawing.Color.LimeGreen;
             this.panelLogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelLogo.Controls.Add(this.imageBoxLogo);
             this.panelLogo.Controls.Add(this.lblNameCompany);
